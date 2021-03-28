@@ -3,7 +3,9 @@
 		$username=$_POST["username"];
 		$password=$_POST["password"];
 		if($username == "proma" && $password == "123456"){
-			setcookie("username",$username,time()+120);
+			//setcookie("username",$username,time()+120);
+			session_start();
+			$_SESSION["username"]=$username;
 			header("Location: dashboard.php");
 		}
 	}
@@ -16,12 +18,12 @@
 		
 			 <table>
             <tr>
-                <td><span>Username</span> </td>
+                <td><span>Username:</span> </td>
                 <td><input type="text" value="" placeholder="Username" name="username"> </td>
             </tr>
             
             <tr>
-                <td><span>Password </span></td>
+                <td><span>Password: </span></td>
                 <td><input type="password" placeholder="Password" name="password"></td>
 
 
