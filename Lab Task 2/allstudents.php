@@ -1,29 +1,36 @@
 <?php
-	$uname="";
-	$pass="";
-	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		$uname=$_POST["uname"];
-		$pass=$_POST["pass"];
-		$server="localhost";
-		$user="root";
-		$password="";
-		$db="wt_sp21_l";
-		$conn = mysqli_connect($server,$user,$password,$db);
-		$query="insert into users values(NULL,'$uname','$pass','user')";	
-		if (mysqli_query($conn,$query)){
-			echo "User Inserted";
-		}
-		else{
-			echo"Can not insert user";
-		}
-	}	
+    require_once "db_config.php";
+    $query ="select * from student";
+    $result = get($query);
 ?>
+
+<!DOCTYPE html>
 <html>
 	<body>
-		<form action="" method="post">
-			<input type="text" name="uname" placeholder="username"><br>
-			<input type="password" name="pass" placeholder="password"><br>
-			<input type="submit" value="register">
-		</form>
+		<table border="1" style="border-collapse:collapse">
+			<tr>
+				<th>Name</th>
+				<th>ID</th>
+				<th>DOB</th>
+				<th>Credit</th>
+				<th>CGPA</th>
+				<th>Dept_id</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+   
+
+<?php
+    foreach($result as $row){
+        echo "<tr>";
+        echo "<td>".$row["uname"]."</td>";
+        echo "<td>".$row["id"]."</td>";
+        echo "<td>".$row["dob"]."</td>";
+        echo "<td>".$row["credit"]."</td>";
+        echo "<td>".$row["cgpa"]."</td>";
+        echo "<td>".$row["dept_id"]."</td>";
+    }
+?>
+		</table>
 	</body>
-</html>	
+</html>
