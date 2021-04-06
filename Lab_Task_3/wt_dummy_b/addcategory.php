@@ -1,7 +1,9 @@
-<?php include 'admin_header.php';?>
+<?php include 'admin_header.php';
+	 require_once 'controllers/CategoryController.php';	 
+?>
 <!--addproduct starts -->
 	<div class="center">
-		<form class="form-horizontal form-material">
+		<form action="" method="post" class="form-horizontal form-material">
 			<div class="form-group">
 				<h4 class="text">Name:</h4> 
 				<input type="text" class="form-control">
@@ -9,7 +11,7 @@
 			
 			<div class="form-group text-center">
 				
-				<input type="submit" class="btn btn-success" value="Add Category" class="form-control">
+				<input type="submit" class="btn btn-success" name="add_category" value="Add Category" class="form-control">
 			</div>
 		</form>
 	</div>
